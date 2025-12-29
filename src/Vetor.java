@@ -2,18 +2,19 @@ public class Vetor {
     public Integer[] elementos;
     private int tamanho;
 
-    public Vetor(int capacidade){
+    public Vetor(int capacidade) {
         this.elementos = new Integer[capacidade];
         this.tamanho = 0;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Vetor {\n");
         sb.append("\titems: [");
-        for (int position = 0; position < tamanho; position++){
+        for (int position = 0; position < tamanho; position++) {
             sb.append(elementos[position]);
-            if (position < tamanho - 1){
+            if (position < tamanho - 1) {
                 sb.append(", ");
             }
         }
@@ -22,5 +23,13 @@ public class Vetor {
         sb.append(String.format("\tsize: %d\n", tamanho));
         sb.append("}");
         return sb.toString();
+    }
+    public boolean adiciona(Integer elemento){
+        if (this.tamanho < this.elementos.length){
+            this.elementos[this.tamanho] = elemento;
+            this.tamanho++;
+            return true;
+        }
+        return false;
     }
 }
