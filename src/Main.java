@@ -8,8 +8,12 @@ public class Main {
         vetor.adiciona(20);
         System.out.println(vetor);
 
-        System.out.println("Tamanho atual: " +vetor.tamanho());
-        System.out.println("Item na posição 0: " + vetor.busca(0));
-        System.out.println("Posição do Elemento 20:" + vetor.busca(20));
+        //System.out.println("Tamanho atual: " +vetor.tamanho());
+        //System.out.println("Item na posição 0: " + vetor.busca(0));
+        //System.out.println("Posição do Elemento 20:" + vetor.busca(20));
+
+        vetor.remove(0);
+        System.out.println(vetor);
+
     }
 }
