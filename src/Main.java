@@ -15,5 +15,8 @@ public class Main {
         vetor.remove(0);
         System.out.println(vetor);
 
+        vetor.adiciona(0);
+        System.out.println(vetor);
+
     }
 }
