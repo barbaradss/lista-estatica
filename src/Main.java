@@ -10,7 +10,6 @@ public class Main {
 
         System.out.println("Tamanho atual: " +vetor.tamanho());
         System.out.println("Item na posição 0: " + vetor.busca(0));
-        System.out.println("Posição do Elemento 2:" +
-                vetor.busca("Elemento 2"));
+        System.out.println("Posição do Elemento 20:" + vetor.busca(20));
     }
 }
