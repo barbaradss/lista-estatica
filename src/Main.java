@@ -24,8 +24,5 @@ public class Main {
         vetor.removePrimeiro();
         System.out.println(vetor);
 
-        vetor.removeUltimo();
-        System.out.println(vetor);
-
     }
 }
