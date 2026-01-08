@@ -6,16 +6,25 @@ public class Main {
 
         vetor.adiciona(10);
         vetor.adiciona(20);
+        vetor.adiciona(10);
+        vetor.adiciona(20);
+        vetor.adiciona(10);
         System.out.println(vetor);
 
         //System.out.println("Tamanho atual: " +vetor.tamanho());
         //System.out.println("Item na posição 0: " + vetor.busca(0));
         //System.out.println("Posição do Elemento 20:" + vetor.busca(20));
 
-        vetor.remove(0);
+        //vetor.remove(0);
+        //System.out.println(vetor);
+
+        //vetor.adiciona2(1, 30 );
+        //System.out.println(vetor);
+
+        vetor.removePrimeiro();
         System.out.println(vetor);
 
-        vetor.adiciona(0);
+        vetor.removeUltimo();
         System.out.println(vetor);
 
     }

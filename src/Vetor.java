@@ -25,13 +25,27 @@ public class Vetor {
         return sb.toString();
     }
     public boolean adiciona(Integer elemento){
-        if (this.tamanho < this.elementos.length){
+        if (this.tamanho <= this.elementos.length){
             this.elementos[this.tamanho] = elemento;
             this.tamanho++;
             return true;
         }
         return false;
     }
+
+    public boolean adiciona(int posicao, Integer elemento){
+        if (posicao < 0 || posicao >= tamanho){
+            throw new IllegalArgumentException("Posição inválida");
+        }
+        for (int i = this.tamanho -1; i>=posicao; i--){
+            this.elementos[i + 1] = this.elementos[i];
+        }
+        this.elementos[posicao]=elemento;
+        this.tamanho++;
+
+        return true;
+    }
+
     public int tamanho(){
         return this.tamanho;
     }
@@ -61,16 +75,23 @@ public class Vetor {
         }
         this.tamanho--;
     }
-    public boolean adiciona(int posicao, Integer elemento){
-        if (posicao < 0 || posicao >= tamanho){
-            throw new IllegalArgumentException("Posição inválida");
+
+    public boolean adiciona2(int posicao, Integer elemento) {
+        if (posicao < 0 || posicao >= this.elementos.length) {
+            throw new IllegalArgumentException("Posição inválida para sobrescrita.");
         }
-        for (int i = this.tamanho -1; i>=posicao; i--){
-            this.elementos[i + 1] = this.elementos[i];
-        }
-        this.elementos[posicao]=elemento;
-        this.tamanho++;
+
+        this.elementos[posicao] = elemento;
+
 
         return true;
     }
+
+    public void removePrimeiro() {
+        remove(0);
+    }
+
+
+
+
 }
