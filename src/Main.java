@@ -18,11 +18,10 @@ public class Main {
         //vetor.remove(0);
         //System.out.println(vetor);
 
-        //vetor.adiciona2(1, 30 );
+        //vetor.atualiza(1, 30 );
         //System.out.println(vetor);
 
-        vetor.removePrimeiro();
+        vetor.removeElemento(4);
         System.out.println(vetor);
-
     }
 }

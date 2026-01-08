@@ -66,6 +66,7 @@ public class Vetor {
         return -1;
     }
 
+    //Complexidade Linear
     public void remove (int posicao){
         if (!(posicao >= 0 && posicao < tamanho)){
             throw new IllegalArgumentException("Posição inválida");
@@ -76,22 +77,20 @@ public class Vetor {
         this.tamanho--;
     }
 
-    public boolean adiciona2(int posicao, Integer elemento) {
+    //Complexidade constante
+    public void removeElemento(int posicao) {
+        if (!(posicao >= 0 && posicao < tamanho)){
+            throw new IllegalArgumentException("Posição inválida");
+        }
+        this.tamanho--;
+        this.elementos[posicao] = this.elementos[tamanho];
+        this.elementos[tamanho] = null;
+    }
+
+    public void atualiza(int posicao, Integer elemento) {
         if (posicao < 0 || posicao >= this.elementos.length) {
             throw new IllegalArgumentException("Posição inválida para sobrescrita.");
         }
-
         this.elementos[posicao] = elemento;
-
-
-        return true;
     }
-
-    public void removePrimeiro() {
-        remove(0);
-    }
-
-
-
-
 }
