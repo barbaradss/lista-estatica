@@ -1,5 +1,5 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         Vetor vetor = new Vetor(5);
@@ -11,17 +11,38 @@ public class Main {
         vetor.adiciona(10);
         System.out.println(vetor);
 
-        //System.out.println("Tamanho atual: " +vetor.tamanho());
-        //System.out.println("Item na posição 0: " + vetor.busca(0));
-        //System.out.println("Posição do Elemento 20:" + vetor.busca(20));
 
-        //vetor.remove(0);
-        //System.out.println(vetor);
+        //Ordenadores
 
-        //vetor.atualiza(1, 30 );
-        //System.out.println(vetor);
+        Vetor lista = new Vetor(10);
+        lista.adiciona(10);
+        lista.adiciona(30);
+        lista.adiciona(50);
+        lista.adiciona(60);
+        lista.adiciona(80);
 
-        vetor.removeElemento(4);
-        System.out.println(vetor);
+
+        Vetor.SortType algoritmo;
+        if (lista.tamanho() < 10) {
+            algoritmo = Vetor.SortType.INSERTION;
+        } else if (lista.tamanho() < 50) {
+            algoritmo = Vetor.SortType.SELECTION;
+        } else {
+            algoritmo = Vetor.SortType.BUBBLE;
+        }
+        System.out.println("Usando: " + algoritmo);
+        lista.sort(algoritmo);
+        System.out.println("Resultado: " + lista);
+
+
+//        Integer[] listas = {25, 42,7 ,8,1, 15,2,9,73, 89, 12, 3};
+//        System.out.println("Antes: " + Arrays.toString(listas) );
+//
+//        BubbleSort.sort(listas, listas.length);
+//        //InsertionSort.sort(listas, listas.length);
+//        //SelectionSort.sort(listas, listas.length);
+//
+//        System.out.println("Depois: " + Arrays.toString(listas));
+
     }
 }

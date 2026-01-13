@@ -33,10 +33,14 @@ public class Vetor {
         return false;
     }
 
-    public boolean adiciona(int posicao, Integer elemento){
-        if (posicao < 0 || posicao >= tamanho){
+    public void verificaAtualizacao (int posicao){
+        if (posicao < 0 || posicao < tamanho){
             throw new IllegalArgumentException("Posição inválida");
         }
+    }
+
+    public boolean adiciona(int posicao, Integer elemento){
+        verificaAtualizacao(tamanho + 1);
         for (int i = this.tamanho -1; i>=posicao; i--){
             this.elementos[i + 1] = this.elementos[i];
         }
@@ -51,9 +55,7 @@ public class Vetor {
     }
 
     public Integer busca(int posicao){
-        if (!(posicao >= 0 && posicao < tamanho)){
-            throw new IllegalArgumentException("Posição inválida. ");
-        }
+        verificaAtualizacao(tamanho);
         return this.elementos[posicao];
     }
 
@@ -68,9 +70,7 @@ public class Vetor {
 
     //Complexidade Linear
     public void remove (int posicao){
-        if (!(posicao >= 0 && posicao < tamanho)){
-            throw new IllegalArgumentException("Posição inválida");
-        }
+        verificaAtualizacao(tamanho);
         for (int i = posicao; i < this.tamanho -1; i++){
             this.elementos[i] = this.elementos[i + 1];
         }
@@ -79,9 +79,7 @@ public class Vetor {
 
     //Complexidade constante
     public void removeElemento(int posicao) {
-        if (!(posicao >= 0 && posicao < tamanho)){
-            throw new IllegalArgumentException("Posição inválida");
-        }
+        verificaAtualizacao(tamanho);
         this.tamanho--;
         this.elementos[posicao] = this.elementos[tamanho];
         this.elementos[tamanho] = null;
@@ -92,5 +90,26 @@ public class Vetor {
             throw new IllegalArgumentException("Posição inválida para sobrescrita.");
         }
         this.elementos[posicao] = elemento;
+    }
+
+    public enum SortType{
+        BUBBLE,
+        INSERTION,
+        SELECTION
+    }
+    public void sort(SortType sortType){
+        switch (sortType){
+            case BUBBLE:
+                BubbleSort.sort(elementos, tamanho);
+                break;
+            case INSERTION:
+                InsertionSort.sort(elementos, tamanho);
+                break;
+            case SELECTION:
+                SelectionSort.sort(elementos, tamanho);
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de ordenação inválido!");
+        }
     }
 }
