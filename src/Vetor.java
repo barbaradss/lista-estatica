@@ -33,12 +33,6 @@ public class Vetor {
         return false;
     }
 
-    public void verificaAtualizacao (int posicao){
-        if (posicao < 0 || posicao < tamanho){
-            throw new IllegalArgumentException("Posição inválida");
-        }
-    }
-
     public boolean adiciona(int posicao, Integer elemento){
         verificaAtualizacao(tamanho + 1);
         for (int i = this.tamanho -1; i>=posicao; i--){
@@ -48,6 +42,12 @@ public class Vetor {
         this.tamanho++;
 
         return true;
+    }
+
+    public void verificaAtualizacao (int posicao){
+        if (posicao < 0 || posicao < tamanho){
+            throw new IllegalArgumentException("Posição inválida");
+        }
     }
 
     public int tamanho(){
@@ -66,15 +66,6 @@ public class Vetor {
             }
         }
         return -1;
-    }
-
-    //Complexidade Linear
-    public void remove (int posicao){
-        verificaAtualizacao(tamanho);
-        for (int i = posicao; i < this.tamanho -1; i++){
-            this.elementos[i] = this.elementos[i + 1];
-        }
-        this.tamanho--;
     }
 
     //Complexidade constante
@@ -113,3 +104,12 @@ public class Vetor {
         }
     }
 }
+
+//Complexidade Linear
+//    public void remove (int posicao){
+//        verificaAtualizacao(tamanho);
+//        for (int i = posicao; i < this.tamanho -1; i++){
+//            this.elementos[i] = this.elementos[i + 1];
+//        }
+//        this.tamanho--;
+//    }

@@ -28,7 +28,7 @@ public class SortedArrayList {
 
     public int pesquisaBinaria(int alvo){
         int min = 0;
-        int max = size -1;
+        int max = size - 1;
 
         while(min <= max){
             int media = (min + max) / 2;
