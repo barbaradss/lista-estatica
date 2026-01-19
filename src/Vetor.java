@@ -2,6 +2,12 @@ public class Vetor {
     public Integer[] elementos;
     private int tamanho;
 
+    public enum SortType{
+        BUBBLE,
+        INSERTION,
+        SELECTION
+    }
+
     public Vetor(int capacidade) {
         this.elementos = new Integer[capacidade];
         this.tamanho = 0;
@@ -25,7 +31,7 @@ public class Vetor {
         return sb.toString();
     }
     public boolean adiciona(Integer elemento){
-        if (this.tamanho <= this.elementos.length){
+        if (this.tamanho < this.elementos.length){
             this.elementos[this.tamanho] = elemento;
             this.tamanho++;
             return true;
@@ -34,7 +40,7 @@ public class Vetor {
     }
 
     public boolean adiciona(int posicao, Integer elemento){
-        verificaAtualizacao(tamanho + 1);
+        verificaAtualizacao(posicao, tamanho + 1);
         for (int i = this.tamanho -1; i>=posicao; i--){
             this.elementos[i + 1] = this.elementos[i];
         }
@@ -44,8 +50,8 @@ public class Vetor {
         return true;
     }
 
-    public void verificaAtualizacao (int posicao){
-        if (posicao < 0 || posicao < tamanho){
+    public void verificaAtualizacao (int posicao, int limiteSuperior){
+        if (posicao < 0 || posicao >= limiteSuperior){
             throw new IllegalArgumentException("Posição inválida");
         }
     }
@@ -55,7 +61,7 @@ public class Vetor {
     }
 
     public Integer busca(int posicao){
-        verificaAtualizacao(tamanho);
+        verificaAtualizacao(posicao, tamanho);
         return this.elementos[posicao];
     }
 
@@ -68,26 +74,28 @@ public class Vetor {
         return -1;
     }
 
+    //Complexidade Linear
+    public void remove (int posicao){
+        verificaAtualizacao(posicao, tamanho);
+        for (int i = posicao; i < this.tamanho -1; i++){
+            this.elementos[i] = this.elementos[i + 1];
+        }
+        this.tamanho--;
+    }
+
     //Complexidade constante
     public void removeElemento(int posicao) {
-        verificaAtualizacao(tamanho);
+        verificaAtualizacao(posicao, tamanho);
         this.tamanho--;
         this.elementos[posicao] = this.elementos[tamanho];
         this.elementos[tamanho] = null;
     }
 
     public void atualiza(int posicao, Integer elemento) {
-        if (posicao < 0 || posicao >= this.elementos.length) {
-            throw new IllegalArgumentException("Posição inválida para sobrescrita.");
-        }
+        verificaAtualizacao(posicao, tamanho);
         this.elementos[posicao] = elemento;
     }
 
-    public enum SortType{
-        BUBBLE,
-        INSERTION,
-        SELECTION
-    }
     public void sort(SortType sortType){
         switch (sortType){
             case BUBBLE:
@@ -104,12 +112,3 @@ public class Vetor {
         }
     }
 }
-
-//Complexidade Linear
-//    public void remove (int posicao){
-//        verificaAtualizacao(tamanho);
-//        for (int i = posicao; i < this.tamanho -1; i++){
-//            this.elementos[i] = this.elementos[i + 1];
-//        }
-//        this.tamanho--;
-//    }
